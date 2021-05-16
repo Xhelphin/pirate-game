@@ -1,0 +1,256 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pirate Game</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Farro:wght@500&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+        <style>
+            .container {
+                background: black;
+                display: inline-block;
+                border: 5px solid black;
+            }
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(7, 80px);
+                grid-template-rows: repeat(7, 80px);
+                grid-gap: 5px;
+            }
+            .grid2 {
+                display: grid;
+                grid-template-columns: repeat(1,80px);
+                grid-template-rows: repeat(1,80px);
+                grid-gap: 5px;
+            }
+            .cell {
+                /* center the cell content */
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                font-family: Arial;
+                font-size: 3rem;
+                font-weight: bold;
+                background: white;
+                font-family: 'M PLUS Rounded 1c', sans-serif;
+            }
+            #title {
+                font-family: 'ZCOOL KuaiLe'
+            }
+            #subtitle {
+                font-family: 'Farro', sans-serif;
+            }
+        </style>
+        <script>
+            var squaresused = [];
+            function randint(min, max) {
+                return Math.floor(Math.random() * (max - min + 1) ) + min;
+            }
+            function randlet() {
+                var tempnum = randint(1,7);
+                if (tempnum == 1) {
+                    var randomletter = 'a';
+                } else if (tempnum == 2) {
+                    var randomletter = 'b';
+                } else if (tempnum == 3) {
+                    var randomletter = 'c';
+                } else if (tempnum == 4) {
+                    var randomletter = 'd';
+                } else if (tempnum == 5) {
+                    var randomletter = 'e';
+                } else if (tempnum == 6) {
+                    var randomletter = 'f';
+                } else {
+                    var randomletter = 'g';
+                }
+                return randomletter;
+            }
+            function randomSquare() {
+                var nextlet = randlet();
+                var nextnum = randint(1,7);
+                var nextsquare = nextlet.concat(nextnum);
+                // console.log(nextsquare);
+                // console.log(squaresused.length);
+                if (squaresused.length > 48) {
+                    // console.log("all squares taken");
+                    return undefined;
+                }
+                var i;
+                var x;
+                var letterlower;
+                var letterupper;
+                var combolower;
+                var comboupper;
+                for (i = 1; i < 8; i++) {
+                    if (i == 1) {
+                        letterlower = 'a';
+                        letterupper = 'A';
+                    } else if (i == 2) {
+                        letterlower = 'b';
+                        letterupper = 'B';
+                    } else if (i == 3) {
+                        letterlower = 'c';
+                        letterupper = 'C';
+                    } else if (i == 4) {
+                        letterlower = 'd';
+                        letterupper = 'D';
+                    } else if (i == 5) {
+                        letterlower = 'e';
+                        letterupper = 'E';
+                    } else if (i == 6) {
+                        letterlower = 'f';
+                        letterupper = 'F';
+                    } else {
+                        letterlower = 'g';
+                        letterupper = 'G';
+                    }
+                    for (x = 1; x < 8; x++) {
+                        combolower = letterlower.concat(x);
+                        comboupper = letterupper.concat(x);
+                        if (nextsquare == combolower) {
+                            if (!(squaresused.includes(combolower))) {
+                                document.getElementById(comboupper).style.background = "red";
+                                document.getElementById(comboupper).style.color = "white";
+                                changeLastUsed(comboupper);
+                                squaresused.push(combolower)
+                            } else {
+                                randomSquare();
+                            }
+                        }
+                    }
+                }
+            }
+            function testFunc(lower, upper) {
+                if (!(squaresused.includes(lower))) {
+                    document.getElementById(upper).style.background = "red";
+                    document.getElementById(upper).style.color = "white";
+                    squaresused.push(lower);
+                }
+            }
+            function selectorOff() {
+                document.getElementById("formlist").disabled = true;
+                document.getElementById("formbutton").disabled = true;
+            }
+            function selectorOn() {
+                document.getElementById("formlist").disabled = false;
+                document.getElementById("formbutton").disabled = false;
+            }
+            function getSelected() {
+                var formList = document.getElementById("formlist");
+                var selectedform = formList.options[formList.selectedIndex].text;
+                selectorOff();
+                // console.log(selectedform);
+                var i;
+                var x;
+                var letterlower;
+                var letterupper;
+                var combolower;
+                var comboupper;
+                for (i = 1; i < 8; i++) {
+                    if (i == 1) {
+                        letterlower = 'a';
+                        letterupper = 'A';
+                    } else if (i == 2) {
+                        letterlower = 'b';
+                        letterupper = 'B';
+                    } else if (i == 3) {
+                        letterlower = 'c';
+                        letterupper = 'C';
+                    } else if (i == 4) {
+                        letterlower = 'd';
+                        letterupper = 'D';
+                    } else if (i == 5) {
+                        letterlower = 'e';
+                        letterupper = 'E';
+                    } else if (i == 6) {
+                        letterlower = 'f';
+                        letterupper = 'F';
+                    } else {
+                        letterlower = 'g';
+                        letterupper = 'G';
+                    }
+                    for (x = 1; x < 8; x++) {
+                        combolower = letterlower.concat(x);
+                        comboupper = letterupper.concat(x);
+                        if (selectedform == comboupper) {
+                            if (!(squaresused.includes(combolower))) {
+                                document.getElementById(comboupper).style.background = "red";
+                                document.getElementById(comboupper).style.color = "white";
+                                changeLastUsed(comboupper);
+                                squaresused.push(combolower);
+                            }
+                        }
+                    }
+                }
+            }
+            function resetSquare() {
+                selectorOff();
+                // console.log(squaresused);
+                squaresused = [];
+                // console.log(squaresused);
+                var i;
+                var x;
+                var resetletter;
+                var squarereset;
+                for (i = 1; i < 8; i++) {
+                    if (i == 1) {
+                        resetletter = 'A';
+                    } else if (i == 2) {
+                        resetletter = 'B';
+                    } else if (i == 3) {
+                        resetletter = 'C';
+                    } else if (i == 4) {
+                        resetletter = 'D';
+                    } else if (i == 5) {
+                        resetletter = 'E';
+                    } else if (i == 6) {
+                        resetletter = 'F';
+                    } else {
+                        resetletter = 'G';
+                    }
+                    for (x = 1; x < 8; x++) {
+                        squarereset = resetletter.concat(x);
+                        document.getElementById(squarereset).style.background = "white";
+                        document.getElementById(squarereset).style.color = "black";
+                    }
+                }
+                changeLastUsed('--');
+            }
+            function changeLastUsed(lastused) {
+                document.getElementById("squarealert").innerHTML = lastused;
+                if (lastused == '--') {
+                    document.getElementById("squarealert").style.background = "white";
+                    document.getElementById("squarealert").style.color = "black";
+                } else {
+                    document.getElementById("squarealert").style.background = "red";
+                    document.getElementById("squarealert").style.color = "white";
+                }
+            }
+        </script>
+    </head>
+    <body bgcolor="#ffff66">
+        <h1 id="title">PIRATE GAME V1.5.1</h1>
+        <h4 id="subtitle">Written in JS by Jack Greenacre</h4>
+        <div class="container">
+            <div class="grid2">
+                <div class="cell" id="squarealert">--</div>
+            </div>
+        </div>
+        <br><br>
+        <div class="container">
+            <div class="grid">
+                <div class="cell" id="A1">A1</div><div class="cell" id="B1">B1</div><div class="cell" id="C1">C1</div><div class="cell" id="D1">D1</div><div class="cell" id="E1">E1</div><div class="cell" id="F1">F1</div><div class="cell" id="G1">G1</div><div class="cell" id="A2">A2</div><div class="cell" id="B2">B2</div><div class="cell" id="C2">C2</div><div class="cell" id="D2">D2</div><div class="cell" id="E2">E2</div><div class="cell" id="F2">F2</div><div class="cell" id="G2">G2</div><div class="cell" id="A3">A3</div><div class="cell" id="B3">B3</div><div class="cell" id="C3">C3</div><div class="cell" id="D3">D3</div><div class="cell" id="E3">E3</div><div class="cell" id="F3">F3</div><div class="cell" id="G3">G3</div><div class="cell" id="A4">A4</div><div class="cell" id="B4">B4</div><div class="cell" id="C4">C4</div><div class="cell" id="D4">D4</div><div class="cell" id="E4">E4</div><div class="cell" id="F4">F4</div><div class="cell" id="G4">G4</div><div class="cell" id="A5">A5</div><div class="cell" id="B5">B5</div><div class="cell" id="C5">C5</div><div class="cell" id="D5">D5</div><div class="cell" id="E5">E5</div><div class="cell" id="F5">F5</div><div class="cell" id="G5">G5</div><div class="cell" id="A6">A6</div><div class="cell" id="B6">B6</div><div class="cell" id="C6">C6</div><div class="cell" id="D6">D6</div><div class="cell" id="E6">E6</div><div class="cell" id="F6">F6</div><div class="cell" id="G6">G6</div><div class="cell" id="A7">A7</div><div class="cell" id="B7">B7</div><div class="cell" id="C7">C7</div><div class="cell" id="D7">D7</div><div class="cell" id="E7">E7</div><div class="cell" id="F7">F7</div><div class="cell" id="G7">G7</div>
+            </div>
+        </div>
+        <br><br>
+        <button type="button" id="nextbutton" onclick="randomSquare()">Next Square</button><button type="button" id="choosebutton" onclick="selectorOn()">Choose Square</button><button type="button" id="resetbutton" onclick="resetSquare()">New Game</button>
+        <br><br>
+        <form id="selectform">
+            <select id="formlist">
+                <option>A1</option><option>A2</option><option>A3</option><option>A4</option><option>A5</option><option>A6</option><option>A7</option><option>B1</option><option>B2</option><option>B3</option><option>B4</option><option>B5</option><option>B6</option><option>B7</option><option>C1</option><option>C2</option><option>C3</option><option>C4</option><option>C5</option><option>C6</option><option>C7</option><option>D1</option><option>D2</option><option>D3</option><option>D4</option><option>D5</option><option>D6</option><option>D7</option><option>E1</option><option>E2</option><option>E3</option><option>E4</option><option>E5</option><option>E6</option><option>E7</option><option>F1</option><option>F2</option><option>F3</option><option>F4</option><option>F5</option><option>F6</option><option>F7</option><option>G1</option><option>G2</option><option>G3</option><option>G4</option><option>G5</option><option>G6</option><option>G7</option>
+            </select>
+            <input id="formbutton" type="button" onclick="getSelected()" value="Choose this square">
+        </form>
+    </body>
+    <script>
+        selectorOff();
+    </script>
+</html>
