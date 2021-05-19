@@ -1,6 +1,7 @@
 # Pirate Game
 TES Pirate Game recreated in HTML, CSS & JS.  
 ## Licenses & Copyright
+This is based on the [TES Pirate Game](https://www.tes.com/teaching-resource/the-pirate-game-end-of-term-activity-6258063).  
 *If this project infringes on any copyright, licenses, etc, please contact me and I will be more than happy to take it down.*  
 ## How to use
 ### Installation
