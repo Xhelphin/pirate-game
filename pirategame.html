@@ -1,9 +1,56 @@
+<!DOCTYPE html>
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Pirate Game</title>
         <link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Farro:wght@500&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
         <style>
+            @keyframes title-animation {
+                0% {
+                    transform: translateY(0px);
+                }
+                25% {
+                    transform: translateY(5px);
+                }
+                50% {
+                    transform: translateY(0px);
+                }
+                75% {
+                    transform: translateY(5px);
+                }
+                100% {
+                    transform: translateY(0px);
+                }
+            }
+            @keyframes selected-cell-animation {
+                0% {
+                    background: white;
+                    color: black;
+                }
+                25% {
+                    color: white;
+                }
+                100% {
+                    background: red;
+                    color: white;
+                }
+            }
+            @keyframes selected-cell-reverse-animation {
+                0% {
+                    background: red;
+                    color: white;
+                }
+                25% {
+                    color: white;
+                }
+                100% {
+                    background: white;
+                    color: black;
+                }
+            }
+            body {
+                background-color: #ffff66;
+            }
             .container {
                 background: black;
                 display: inline-block;
@@ -33,10 +80,15 @@
                 font-family: 'M PLUS Rounded 1c', sans-serif;
             }
             #title {
-                font-family: 'ZCOOL KuaiLe'
+                font-family: 'ZCOOL KuaiLe';
+                animation: title-animation 2s cubic-bezier(0.9, 0.7, 0.5, 0.9);
             }
             #subtitle {
                 font-family: 'Farro', sans-serif;
+            }
+            .titles {
+                width: 595px;
+                text-align: center;
             }
         </style>
         <script>
@@ -109,10 +161,11 @@
                         comboupper = letterupper.concat(x);
                         if (nextsquare == combolower) {
                             if (!(squaresused.includes(combolower))) {
+                                document.getElementById(comboupper).style.animation = "selected-cell-animation 1000ms";
                                 document.getElementById(comboupper).style.background = "red";
                                 document.getElementById(comboupper).style.color = "white";
                                 changeLastUsed(comboupper);
-                                squaresused.push(combolower)
+                                squaresused.push(combolower);
                             } else {
                                 randomSquare();
                             }
@@ -122,6 +175,7 @@
             }
             function testFunc(lower, upper) {
                 if (!(squaresused.includes(lower))) {
+                    document.getElementById(upper).style.animation = "selected-cell-animation 1000ms";
                     document.getElementById(upper).style.background = "red";
                     document.getElementById(upper).style.color = "white";
                     squaresused.push(lower);
@@ -183,6 +237,7 @@
                         comboupper = letterupper.concat(x);
                         if (selectedform == comboupper) {
                             if (!(squaresused.includes(combolower))) {
+                                document.getElementById(comboupper).style.animation = "selected-cell-animation 1000ms";
                                 document.getElementById(comboupper).style.background = "red";
                                 document.getElementById(comboupper).style.color = "white";
                                 changeLastUsed(comboupper);
@@ -220,6 +275,7 @@
                     }
                     for (x = 1; x < 8; x++) {
                         squarereset = resetletter.concat(x);
+                        document.getElementById(squarereset).style.animation = "selected-cell-reverse-animation 1000ms";
                         document.getElementById(squarereset).style.background = "white";
                         document.getElementById(squarereset).style.color = "black";
                     }
@@ -229,9 +285,11 @@
             function changeLastUsed(lastused) {
                 document.getElementById("squarealert").innerHTML = lastused;
                 if (lastused == '--') {
+                    document.getElementById("squarealert").style.animation = "selected-cell-reverse-animation 1000ms";
                     document.getElementById("squarealert").style.background = "white";
                     document.getElementById("squarealert").style.color = "black";
                 } else {
+                    document.getElementById("squarealert").style.animation = "selected-cell-animation 1000ms";
                     document.getElementById("squarealert").style.background = "red";
                     document.getElementById("squarealert").style.color = "white";
                 }
@@ -257,6 +315,7 @@
                 } else {
                     movetoundoupper = 'G'.concat(movetoundolower[1]);
                 }
+                document.getElementById(movetoundoupper).style.animation = "selected-cell-reverse-animation 1000ms";
                 document.getElementById(movetoundoupper).style.background = "white";
                 document.getElementById(movetoundoupper).style.color = "black";
                 squaresused.pop();
@@ -285,9 +344,11 @@
             }
         </script>
     </head>
-    <body bgcolor="#ffff66">
-        <h1 id="title">PIRATE GAME V1.6.2</h1>
-        <h4 id="subtitle">Written by Jack Greenacre</h4>
+    <body>
+        <div class="titles">
+            <h1 id="title">PIRATE GAME V1.6.2</h1>
+            <h4 id="subtitle">Written by Jack Greenacre</h4>
+        </div>
         <div class="container">
             <div class="grid2">
                 <div class="cell" id="squarealert">--</div>
@@ -314,5 +375,6 @@
     <script>
         selectorOff();
         undoOff();
+        resetSquare();
     </script>
 </html>
