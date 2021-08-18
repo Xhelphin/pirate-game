@@ -185,7 +185,7 @@
                         comboupper = letterupper.concat(x);
                         if (nextsquare == combolower) {
                             if (!(squaresused.includes(combolower))) {
-                                document.getElementById(comboupper).style.animation = "selected-cell-animation 1000ms";
+                                document.getElementById(comboupper).style.animation = "selected-cell-animation 600ms";
                                 document.getElementById(comboupper).style.background = "red";
                                 document.getElementById(comboupper).style.color = "white";
                                 changeLastUsed(comboupper);
@@ -199,7 +199,7 @@
             }
             function testFunc(lower, upper) {
                 if (!(squaresused.includes(lower))) {
-                    document.getElementById(upper).style.animation = "selected-cell-animation 1000ms";
+                    document.getElementById(upper).style.animation = "selected-cell-animation 600ms";
                     document.getElementById(upper).style.background = "red";
                     document.getElementById(upper).style.color = "white";
                     squaresused.push(lower);
@@ -261,7 +261,7 @@
                         comboupper = letterupper.concat(x);
                         if (selectedform == comboupper) {
                             if (!(squaresused.includes(combolower))) {
-                                document.getElementById(comboupper).style.animation = "selected-cell-animation 1000ms";
+                                document.getElementById(comboupper).style.animation = "selected-cell-animation 600ms";
                                 document.getElementById(comboupper).style.background = "red";
                                 document.getElementById(comboupper).style.color = "white";
                                 changeLastUsed(comboupper);
@@ -299,7 +299,7 @@
                     }
                     for (x = 1; x < 8; x++) {
                         squarereset = resetletter.concat(x);
-                        document.getElementById(squarereset).style.animation = "selected-cell-reverse-animation 1000ms";
+                        document.getElementById(squarereset).style.animation = "selected-cell-reverse-animation 600ms";
                         document.getElementById(squarereset).style.background = "white";
                         document.getElementById(squarereset).style.color = "black";
                     }
@@ -309,11 +309,11 @@
             function changeLastUsed(lastused) {
                 document.getElementById("squarealert").innerHTML = lastused;
                 if (lastused == '--') {
-                    document.getElementById("squarealert").style.animation = "selected-cell-reverse-animation 1000ms";
+                    document.getElementById("squarealert").style.animation = "selected-cell-reverse-animation 600ms";
                     document.getElementById("squarealert").style.background = "white";
                     document.getElementById("squarealert").style.color = "black";
                 } else {
-                    document.getElementById("squarealert").style.animation = "selected-cell-animation 1000ms";
+                    document.getElementById("squarealert").style.animation = "selected-cell-animation 600ms";
                     document.getElementById("squarealert").style.background = "red";
                     document.getElementById("squarealert").style.color = "white";
                 }
@@ -339,7 +339,7 @@
                 } else {
                     movetoundoupper = 'G'.concat(movetoundolower[1]);
                 }
-                document.getElementById(movetoundoupper).style.animation = "selected-cell-reverse-animation 1000ms";
+                document.getElementById(movetoundoupper).style.animation = "selected-cell-reverse-animation 600ms";
                 document.getElementById(movetoundoupper).style.background = "white";
                 document.getElementById(movetoundoupper).style.color = "black";
                 squaresused.pop();
