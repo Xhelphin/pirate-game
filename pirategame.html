@@ -117,6 +117,22 @@
                 align-items: center;
                 justify-content: center;
             }
+            @supports (-webkit-text-stroke: 1px black) {
+                .stroketext {
+                    -webkit-text-stroke: 1px black;
+                    color: white;
+                    text-shadow:
+                        3px 3px 0 #000,
+                        -1px -1px 0 #000,
+                        1px -1px 0 #000,
+                        -1px 1px 0 #000,
+                        1px 1px 0 #000;
+                }
+                .stroketextmin {
+                    -webkit-text-stroke: 1px black;
+                    color: white;
+                }
+            }
         </style>
         <script>
             var squaresused = [];
@@ -374,8 +390,8 @@
     <body>
         <div class="content">
             <div class="titles">
-                <h1 id="title">PIRATE GAME V1.7.0</h1>
-                <h4 id="subtitle">Written by Jack Greenacre</h4>
+                <h1 id="title" class="stroketext">PIRATE GAME V1.7.0</h1>
+                <h2 id="subtitle" class="stroketextmin">Written by Jack Greenacre</h4>
             </div>
             <div class="centeredcontent">
                 <div class="container">
@@ -392,7 +408,7 @@
                     </div>
                 </div>
             </div>
-            <br><br>
+            <br>
             <div class="centeredcontent">
                 <button type="button" id="nextbutton" onclick="randomSquare()">Next Square</button><button type="button" id="choosebutton" onclick="selectorOn()">Choose Square</button><button type="button" id="undobutton" onclick="undoLastMove()">Undo Move</button><button type="button" id="resetbutton" onclick="resetSquare()">New Game</button>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
