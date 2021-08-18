@@ -111,27 +111,12 @@
             }
             .titles {
                 text-align: center;
+                color: white;
             }
             .centeredcontent {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-            }
-            @supports (-webkit-text-stroke: 1px black) {
-                .stroketext {
-                    -webkit-text-stroke: 1px black;
-                    color: white;
-                    text-shadow:
-                        3px 3px 0 #000,
-                        -1px -1px 0 #000,
-                        1px -1px 0 #000,
-                        -1px 1px 0 #000,
-                        1px 1px 0 #000;
-                }
-                .stroketextmin {
-                    -webkit-text-stroke: 1px black;
-                    color: white;
-                }
             }
         </style>
         <script>
@@ -390,8 +375,8 @@
     <body>
         <div class="content">
             <div class="titles">
-                <h1 id="title" class="stroketext">PIRATE GAME V1.7.0</h1>
-                <h2 id="subtitle" class="stroketextmin">Written by Jack Greenacre</h4>
+                <h1 id="title">PIRATE GAME V1.7.0</h1>
+                <h2 id="subtitle">Written by Jack Greenacre</h4>
             </div>
             <div class="centeredcontent">
                 <div class="container">
