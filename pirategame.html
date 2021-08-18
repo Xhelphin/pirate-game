@@ -262,11 +262,13 @@
                 document.getElementById("formlist").disabled = true;
                 document.getElementById("formbutton").disabled = true;
                 document.getElementById("hiddenform").style.display = "none";
+                document.getElementById("hiddenspacer").style.display = "none";
             }
             function selectorOn() {
                 document.getElementById("formlist").disabled = false;
                 document.getElementById("formbutton").disabled = false;
                 document.getElementById("hiddenform").style.display = "block";
+                document.getElementById("hiddenspacer").style.display = "block";
             }
             function undoOn() {
                 document.getElementById("undobutton").disabled = false;
@@ -445,7 +447,7 @@
             <br>
             <div class="centeredcontent">
                 <button type="button" id="nextbutton" onclick="randomSquare()" class="button blackbutton">Next Square</button><button type="button" id="choosebutton" onclick="selectorOn()" class="button blackbutton">Choose Square</button><button type="button" id="undobutton" onclick="undoLastMove()" class="button blackbutton">Undo Move</button><button type="button" id="resetbutton" onclick="resetSquare()" class="button blackbutton">New Game</button>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <p id="hiddenspacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
                 <div id="hiddenform">
                     <form id="selectform">
                         <select id="formlist" class="selectlist">
