@@ -113,6 +113,12 @@
                 text-align: center;
                 color: white;
             }
+            @supports (-webkit-text-stroke: 0.05px white) {
+                .textstrokemin {
+                    -webkit-text-stroke: 0.05px white;
+                    color: black;
+                }
+            }
             .centeredcontent {
                 display: flex;
                 align-items: center;
@@ -416,8 +422,8 @@
     <body>
         <div class="content">
             <div class="titles">
-                <h1 id="title">PIRATE GAME V1.7.0</h1>
-                <h2 id="subtitle">Written by Jack Greenacre</h4>
+                <h1 id="title" class="textstrokemin">PIRATE GAME V1.7.0</h1>
+                <h2 id="subtitle" class="textstrokemin">Written by Jack Greenacre</h2>
             </div>
             <div class="centeredcontent">
                 <div class="container">
