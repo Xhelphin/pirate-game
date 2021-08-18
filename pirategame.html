@@ -5,6 +5,7 @@
         <title>Pirate Game</title>
         <link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Farro:wght@500&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
         <style>
+            @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
             @keyframes title-animation {
                 0% {
                     transform: translateY(0px);
@@ -73,7 +74,6 @@
                 -ms-filter: blur(8px);
                 filter: blur(8px);
             }
-
             .container {
                 background: black;
                 display: inline-block;
@@ -117,6 +117,47 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+            }
+            .button {
+                background-color: white;
+                border: none;
+                color: white;
+                padding: 5px 5px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 24px;
+                margin: 4px 2px;
+                transition-duration: 0.4s;
+                cursor: pointer;
+                border-radius: 6px;
+                font-family: 'Raleway', sans-serif;
+            }
+            .blackbutton {
+                background-color: white;
+                color: black;
+                border: 3px solid black;
+            }
+            .blackbutton:hover {
+                background-color: #aaaaaa;
+            }
+            .selectlist {
+                background-color: white;
+                border: 3px solid black;
+                color: black;
+                padding: 5px 5px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 24px;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 6px;
+                transition-duration: 0.4s;
+                font-family:  'Raleway', sans-serif;
+            }
+            .selectlist:hover {
+                background-color: #efefef;
             }
         </style>
         <script>
@@ -395,14 +436,14 @@
             </div>
             <br>
             <div class="centeredcontent">
-                <button type="button" id="nextbutton" onclick="randomSquare()">Next Square</button><button type="button" id="choosebutton" onclick="selectorOn()">Choose Square</button><button type="button" id="undobutton" onclick="undoLastMove()">Undo Move</button><button type="button" id="resetbutton" onclick="resetSquare()">New Game</button>
+                <button type="button" id="nextbutton" onclick="randomSquare()" class="button blackbutton">Next Square</button><button type="button" id="choosebutton" onclick="selectorOn()" class="button blackbutton">Choose Square</button><button type="button" id="undobutton" onclick="undoLastMove()" class="button blackbutton">Undo Move</button><button type="button" id="resetbutton" onclick="resetSquare()" class="button blackbutton">New Game</button>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
                 <div id="hiddenform">
                     <form id="selectform">
-                        <select id="formlist">
+                        <select id="formlist" class="selectlist">
                             <option>A1</option><option>A2</option><option>A3</option><option>A4</option><option>A5</option><option>A6</option><option>A7</option><option>B1</option><option>B2</option><option>B3</option><option>B4</option><option>B5</option><option>B6</option><option>B7</option><option>C1</option><option>C2</option><option>C3</option><option>C4</option><option>C5</option><option>C6</option><option>C7</option><option>D1</option><option>D2</option><option>D3</option><option>D4</option><option>D5</option><option>D6</option><option>D7</option><option>E1</option><option>E2</option><option>E3</option><option>E4</option><option>E5</option><option>E6</option><option>E7</option><option>F1</option><option>F2</option><option>F3</option><option>F4</option><option>F5</option><option>F6</option><option>F7</option><option>G1</option><option>G2</option><option>G3</option><option>G4</option><option>G5</option><option>G6</option><option>G7</option>
                         </select>
-                        <input id="formbutton" type="button" onclick="getSelected()" value="Choose square">
+                        <input id="formbutton" type="button" onclick="getSelected()" value="Choose square" class="button blackbutton">
                     </form>
                 </div>
             </div>
