@@ -207,43 +207,33 @@
                 }
                 var i;
                 var x;
-                var letterlower;
-                var letterupper;
-                var combolower;
+                var letter;
                 var comboupper;
                 for (i = 1; i < 8; i++) {
                     if (i == 1) {
-                        letterlower = 'a';
-                        letterupper = 'A';
+                        letter = 'A';
                     } else if (i == 2) {
-                        letterlower = 'b';
-                        letterupper = 'B';
+                        letter = 'B';
                     } else if (i == 3) {
-                        letterlower = 'c';
-                        letterupper = 'C';
+                        letter = 'C';
                     } else if (i == 4) {
-                        letterlower = 'd';
-                        letterupper = 'D';
+                        letter = 'D';
                     } else if (i == 5) {
-                        letterlower = 'e';
-                        letterupper = 'E';
+                        letter = 'E';
                     } else if (i == 6) {
-                        letterlower = 'f';
-                        letterupper = 'F';
+                        letter = 'F';
                     } else {
-                        letterlower = 'g';
-                        letterupper = 'G';
+                        letter = 'G';
                     }
                     for (x = 1; x < 8; x++) {
-                        combolower = letterlower.concat(x);
-                        comboupper = letterupper.concat(x);
-                        if (nextsquare == combolower) {
-                            if (!(squaresused.includes(combolower))) {
+                        comboupper = letter.concat(x);
+                        if (nextsquare == comboupper.toLowerCase()) {
+                            if (!(squaresused.includes(comboupper.toLowerCase()))) {
                                 document.getElementById(comboupper).style.animation = "selected-cell-animation 600ms";
                                 document.getElementById(comboupper).style.background = "red";
                                 document.getElementById(comboupper).style.color = "white";
                                 changeLastUsed(comboupper);
-                                squaresused.push(combolower);
+                                squaresused.push(comboupper.toLowerCase());
                             } else {
                                 randomSquare();
                             }
@@ -274,9 +264,7 @@
             function resetSquare() {
                 undoOff();
                 selectorOff();
-                // console.log(squaresused);
                 squaresused = [];
-                // console.log(squaresused);
                 var i;
                 var x;
                 var resetletter;
@@ -333,22 +321,7 @@
                     return undefined;
                 }
                 var movetoundolower = squaresused[(squaresused.length)-1];
-                var movetoundoupper;
-                if (movetoundolower[0] == 'a') {
-                    movetoundoupper = 'A'.concat(movetoundolower[1]);
-                } else if (movetoundolower[0] == 'b') {
-                    movetoundoupper = 'B'.concat(movetoundolower[1]);
-                } else if (movetoundolower[0] == 'c') {
-                    movetoundoupper = 'C'.concat(movetoundolower[1]);
-                } else if (movetoundolower[0] == 'd') {
-                    movetoundoupper = 'D'.concat(movetoundolower[1]);
-                } else if (movetoundolower[0] == 'e') {
-                    movetoundoupper = 'E'.concat(movetoundolower[1]);
-                } else if (movetoundolower[0] == 'f') {
-                    movetoundoupper = 'F'.concat(movetoundolower[1]);
-                } else {
-                    movetoundoupper = 'G'.concat(movetoundolower[1]);
-                }
+                var movetoundoupper = movetoundolower.toUpperCase();
                 document.getElementById(movetoundoupper).style.animation = "selected-cell-reverse-animation 600ms";
                 document.getElementById(movetoundoupper).style.background = "white";
                 document.getElementById(movetoundoupper).style.color = "black";
@@ -357,23 +330,7 @@
                     changeLastUsed('--');
                     undoOff();
                 } else {
-                    var changelastused;
-                    if (squaresused[(squaresused.length)-1][0] == 'a') {
-                        changelastused = 'A';
-                    } else if (squaresused[(squaresused.length)-1][0] == 'b') {
-                        changelastused = 'B';
-                    } else if (squaresused[(squaresused.length)-1][0] == 'c') {
-                        changelastused = 'C';
-                    } else if (squaresused[(squaresused.length)-1][0] == 'd') {
-                        changelastused = 'D';
-                    } else if (squaresused[(squaresused.length)-1][0] == 'e') {
-                        changelastused = 'E';
-                    } else if (squaresused[(squaresused.length)-1][0] == 'f') {
-                        changelastused = 'F';
-                    } else {
-                        changelastused = 'G';
-                    }
-                    changeLastUsed(changelastused.concat(squaresused[(squaresused.length)-1][1]));
+                    changeLastUsed(squaresused[(squaresused.length)-1].toUpperCase());
                 }
             }
         </script>
