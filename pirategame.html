@@ -111,6 +111,9 @@
             #subtitle {
                 font-family: 'Farro', sans-serif;
             }
+            #selectwarning {
+                font-family: 'Farro', sans-serif;
+            }
             .titles {
                 text-align: center;
                 color: white;
@@ -222,9 +225,13 @@
             }
             function selectorOff() {
                 userselecton = false;
+                document.getElementById('selectwarning').style.display = "none";
+                document.getElementById('whenwarninghidden').style.display = "inline";
             }
             function selectorOn() {
                 userselecton = true;
+                document.getElementById('selectwarning').style.display = "block";
+                document.getElementById('whenwarninghidden').style.display = "none";
             }
             function undoOn() {
                 document.getElementById("undobutton").disabled = false;
@@ -279,12 +286,12 @@
             }
             function selectSquare(squareid) {
                 if (userselecton) {
-                    userselecton = false;
                     document.getElementById(squareid).style.animation = "selected-cell-animation 600ms";
                     document.getElementById(squareid).style.background = "red";
                     document.getElementById(squareid).style.color = "white";
                     changeLastUsed(squareid);
                     squaresused.push(squareid.toLowerCase());
+                    selectorOff();
                 }
             }
             function undoLastMove() {
@@ -327,13 +334,17 @@
                     </div>
                 </div>
             </div>
-            <br>
+            <br id="whenwarninghidden">
+            <div class="centeredcontent">
+                <h2 id="selectwarning" class="textstrokemin">Click a cell to select!</h2>
+            </div>
             <div class="centeredcontent">
                 <button type="button" id="nextbutton" onclick="randomSquare()" class="button blackbutton">Next Square</button><button type="button" id="choosebutton" onclick="selectorOn()" class="button blackbutton">Choose Square</button><button type="button" id="undobutton" onclick="undoLastMove()" class="button blackbutton">Undo Move</button><button type="button" id="resetbutton" onclick="resetSquare()" class="button blackbutton">New Game</button>
             </div>
         </div>
     </body>
     <script>
+        selectorOff();
         undoOff();
         resetSquare();
     </script>
