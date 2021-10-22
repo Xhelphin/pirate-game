@@ -199,46 +199,17 @@
                 var nextlet = randlet();
                 var nextnum = randint(1,7);
                 var nextsquare = nextlet.concat(nextnum);
-                // console.log(nextsquare);
-                // console.log(squaresused.length);
                 if (squaresused.length > 48) {
-                    // console.log("all squares taken");
                     return undefined;
                 }
-                var i;
-                var x;
-                var letter;
-                var comboupper;
-                for (i = 1; i < 8; i++) {
-                    if (i == 1) {
-                        letter = 'A';
-                    } else if (i == 2) {
-                        letter = 'B';
-                    } else if (i == 3) {
-                        letter = 'C';
-                    } else if (i == 4) {
-                        letter = 'D';
-                    } else if (i == 5) {
-                        letter = 'E';
-                    } else if (i == 6) {
-                        letter = 'F';
-                    } else {
-                        letter = 'G';
-                    }
-                    for (x = 1; x < 8; x++) {
-                        comboupper = letter.concat(x);
-                        if (nextsquare == comboupper.toLowerCase()) {
-                            if (!(squaresused.includes(comboupper.toLowerCase()))) {
-                                document.getElementById(comboupper).style.animation = "selected-cell-animation 600ms";
-                                document.getElementById(comboupper).style.background = "red";
-                                document.getElementById(comboupper).style.color = "white";
-                                changeLastUsed(comboupper);
-                                squaresused.push(comboupper.toLowerCase());
-                            } else {
-                                randomSquare();
-                            }
-                        }
-                    }
+                if (!(squaresused.includes(nextsquare))) {
+                    document.getElementById(nextsquare.toUpperCase()).style.animation = "selected-cell-animation 600ms";
+                    document.getElementById(nextsquare.toUpperCase()).style.background = "red";
+                    document.getElementById(nextsquare.toUpperCase()).style.color = "white";
+                    changeLastUsed(nextsquare.toUpperCase());
+                    squaresused.push(nextsquare);
+                } else {
+                    randomSquare();
                 }
             }
             function testFunc(lower, upper) {
