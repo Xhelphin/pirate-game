@@ -86,6 +86,10 @@
                 font-weight: bold;
                 background: white;
                 font-family: 'M PLUS Rounded 1c', sans-serif;
+                cursor: default;
+            }
+            .cell.newcursor {
+                cursor: pointer;
             }
             #title {
                 font-family: 'ZCOOL KuaiLe';
@@ -209,11 +213,51 @@
                 userselecton = false;
                 document.getElementById('selectwarning').style.display = "none";
                 document.getElementById('whenwarninghidden').style.display = "inline";
+                for (var i = 1; i <= 7; i++) {
+                    if (i == 1) {
+                        var cursorletter = 'A';
+                    } else if (i == 2) {
+                        var cursorletter = 'B';
+                    } else if (i == 3) {
+                        var cursorletter = 'C';
+                    } else if (i == 4) {
+                        var cursorletter = 'D';
+                    } else if (i == 5) {
+                        var cursorletter = 'E';
+                    } else if (i == 6) {
+                        var cursorletter = 'F';
+                    } else {
+                        var cursorletter = 'G';
+                    }
+                    for (var x = 1; x <= 7; x++) {
+                        document.getElementById(cursorletter.concat(x)).classList.remove("newcursor");
+                    }
+                }
             }
             function selectorOn() {
                 userselecton = true;
                 document.getElementById('selectwarning').style.display = "block";
                 document.getElementById('whenwarninghidden').style.display = "none";
+                for (var i = 1; i <= 7; i++) {
+                    if (i == 1) {
+                        var cursorletter = 'A';
+                    } else if (i == 2) {
+                        var cursorletter = 'B';
+                    } else if (i == 3) {
+                        var cursorletter = 'C';
+                    } else if (i == 4) {
+                        var cursorletter = 'D';
+                    } else if (i == 5) {
+                        var cursorletter = 'E';
+                    } else if (i == 6) {
+                        var cursorletter = 'F';
+                    } else {
+                        var cursorletter = 'G';
+                    }
+                    for (var x = 1; x <= 7; x++) {
+                        document.getElementById(cursorletter.concat(x)).classList.add("newcursor");
+                    }
+                }
             }
             function undoOn() {
                 document.getElementById("undobutton").disabled = false;
