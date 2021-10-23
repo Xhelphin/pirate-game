@@ -269,31 +269,26 @@
                 undoOff();
                 selectorOff();
                 squaresused = [];
-                var i;
-                var x;
-                var resetletter;
-                var squarereset;
-                for (i = 1; i < 8; i++) {
+                for (var i = 1; i < 8; i++) {
                     if (i == 1) {
-                        resetletter = 'A';
+                        var resetletter = 'A';
                     } else if (i == 2) {
-                        resetletter = 'B';
+                        var resetletter = 'B';
                     } else if (i == 3) {
-                        resetletter = 'C';
+                        var resetletter = 'C';
                     } else if (i == 4) {
-                        resetletter = 'D';
+                        var resetletter = 'D';
                     } else if (i == 5) {
-                        resetletter = 'E';
+                        var resetletter = 'E';
                     } else if (i == 6) {
-                        resetletter = 'F';
+                        var resetletter = 'F';
                     } else {
-                        resetletter = 'G';
+                        var resetletter = 'G';
                     }
-                    for (x = 1; x < 8; x++) {
-                        squarereset = resetletter.concat(x);
-                        document.getElementById(squarereset).style.animation = "selected-cell-reverse-animation 600ms";
-                        document.getElementById(squarereset).style.background = "white";
-                        document.getElementById(squarereset).style.color = "black";
+                    for (var x = 1; x < 8; x++) {
+                        document.getElementById(resetletter.concat(x)).style.animation = "selected-cell-reverse-animation 600ms";
+                        document.getElementById(resetletter.concat(x)).style.background = "white";
+                        document.getElementById(resetletter.concat(x)).style.color = "black";
                     }
                 }
                 changeLastUsed('--');
