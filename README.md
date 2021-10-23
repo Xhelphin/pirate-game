@@ -14,7 +14,7 @@ The empty square will show the last square that was selected, either randomly or
 #### Grid
 The grid shows the squares that can be chosen by random or from the list. Squares will be white if they have not been selected and red if they have.  
 #### Buttons and list
-The buttons at the bottom of the page shows 4 buttons and then a list and another button.  
+The buttons at the bottom of the page shows 4 buttons.    
 The first button (labelled `Next Square`) will randomly pick a square to play.  
 The next button (labelled `Choose Square`) will enable the list and button below it for you to manually pick a square to be played.  
 The next button (labelled `Undo Move`) will undo whichever square was last selected. This button can be used as many times in a row as needed.  
